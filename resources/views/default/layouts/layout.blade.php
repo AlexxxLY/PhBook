@@ -3,6 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
         <title>PhoneBook</title>
 
@@ -15,7 +19,7 @@
                 background-color: #fff;
                 color: #636b6f;
                 /* color : #548c90; */
-                font-family: 'Nunito', sans-serif;
+                font-family: sans-serif;
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
@@ -40,13 +44,19 @@
                 right: 10px;
                 top: 18px;
             }
+            .top-left {
+                position: absolute;
+                left: 20px;
+                top: 5px;
+            }
 
             .content {
                 text-align: center;
             }
 
             .title {
-                font-size: 84px;
+                font-size: 40px;
+                font-family:sans-serif;
             }
 
             .links > a {
@@ -65,6 +75,13 @@
         </style>
     </head>
     <body>
+    
+    <!-- <a class="navbar-brand" href="#">Logo</a> -->
+    <!-- <div class="container"> -->
+<!-- <div class = "text-center"> -->
+  
+<!-- </div>           -->
+<!-- <div class="navbar"> -->
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -78,9 +95,13 @@
                         @endif
                     @endauth
                 </div>
+                <div class="top-left title">
+                PhoneBook  
+                </div>
             @endif
 
             @yield('content')
         </div>
+       
     </body>
 </html>
