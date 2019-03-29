@@ -1,8 +1,12 @@
 @extends('default.layouts.layout')
 
 @section('content')
-
+<br>
 <div class="container">
+
+<button class="btn btn-lg btn-info">Add Contact</button>
+<button class="btn btn-lg btn-warning">Delete</button>
+<br>
 <!-- <div class = "text-center">
   <h2>Phone Book</h2>
   <p>demo version 1.0</p>
@@ -10,6 +14,7 @@
 <br>
 <input class="form-control" id="myInput" type="text" placeholder="Search..">
   <br>
+
   <table class="table table-bordered table-striped">  
     <thead>
       <tr>
