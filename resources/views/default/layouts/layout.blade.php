@@ -1,107 +1,66 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-        <title>PhoneBook</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>PhoneBook</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
         <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                /* color : #548c90; */
-                font-family: sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-            .top-left {
-                position: absolute;
-                left: 20px;
-                top: 5px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 40px;
-                font-family:sans-serif;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            /* .m-b-md {
-                margin-bottom: 30px;
-            } */
+            body {
+                   font: 15px, sans-serif;
+                }
         </style>
+
     </head>
     <body>
-    
+
     <!-- <a class="navbar-brand" href="#">Logo</a> -->
     <!-- <div class="container"> -->
 <!-- <div class = "text-center"> -->
-  
+
 <!-- </div>           -->
 <!-- <div class="navbar"> -->
-        <div class="flex-center position-ref full-height">
+        <!-- <div class="navbar flex-center position-ref full-height"> -->
+   
+  <nav class="navbar navbar-inverse">
+    <div class="container">
+     <div class="navbar-header">
+      <a class="navbar-brand" href="/">PhoneBook</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
             @if (Route::has('login'))
-                <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                    <li>
+                       <a href="{{ url('/home') }}"><span class="glyphicon glyphicon-home"></span> Home</a>
+                    </li>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-
+                    <li >
+                        <a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    </li>
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                        <li>
+                            <a href="{{ route('register') }}">
+                            <span class="glyphicon glyphicon-user"></span> Register</a>
+                        </li>
                         @endif
                     @endauth
-                </div>
-                <div class="top-left title">
-                PhoneBook  
-                </div>
+                </ul>
             @endif
+            </div>
+        </nav>
+<div id=but class="container">
+<button class="btn btn-lg">Add</button>
+<button class="btn btn-lg">Delete</button>
 
-            @yield('content')
-        </div>
-       
+</div>
+@yield('content')
+
     </body>
 </html>
