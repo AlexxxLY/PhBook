@@ -63,8 +63,22 @@
       <ul class="nav navbar-nav navbar-right">
        @if (Route::has('login'))
         @auth
-        <li>
+        <!-- <li>
             <a href="{{ url('/home') }}"><span class="glyphicon glyphicon-home"></span> Home</a>
+        </li> -->
+        <li class="dropdown">
+            <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            <span class="glyphicon glyphicon-user"></span> {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="{{ route('logout') }}"onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">{{ __('Logout') }}
+                </a></li>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+                </form>
+             </ul>
         </li>
             @else
                 <li >
@@ -72,7 +86,7 @@
                 </li>
                     @if (Route::has('register'))
                         <li>
-                            <a href="{{ route('register') }}"><span class="glyphicon glyphicon-user"></span> Register</a>
+                            <a href="{{ route('register') }}"><span class="glyphicon glyphicon-cog"></span> Register</a>
                         </li>
                     @endif
             @endauth
@@ -94,12 +108,14 @@
         @auth
              @yield('content')
         @endauth
-    @else
-      <h1>Welcome</h1>
-      <p>To get started, you must log in</p>
-      <hr>
-      <h3>Test</h3>
-      <p>Lorem ipsum...</p>
+        @guest
+        <div class="text-center">
+           <br>
+           <h1 >Welcome!!!</h1>
+           <p>To get started, you must log in ...</p>
+           <hr>
+        </div>
+        @endguest
     @endif
     </div>
     <div class="col-sm-2 sidenav">

@@ -6,7 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>PhoneBook</title>
+    <title>Auth</title>
     <!-- <title>{{ config('app.name', 'PhoneBook') }}</title> -->
 
     <!-- Scripts -->
@@ -22,9 +22,9 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                PhoneBook <!-- {{ config('app.name', 'PhoneBook') }} -->
+                Organizer <!-- {{ config('app.name', 'PhoneBook') }} -->
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
