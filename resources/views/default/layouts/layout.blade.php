@@ -1,66 +1,121 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <title>PhoneBook</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Organizer</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
 
-        <!-- Styles -->
-        <style>
-            body {
-                   font: 15px, sans-serif;
-                }
-        </style>
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
 
-    </head>
-    <body>
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
 
-    <!-- <a class="navbar-brand" href="#">Logo</a> -->
-    <!-- <div class="container"> -->
-<!-- <div class = "text-center"> -->
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+  </style>
+</head>
+<body>
 
-<!-- </div>           -->
-<!-- <div class="navbar"> -->
-        <!-- <div class="navbar flex-center position-ref full-height"> -->
-   
-  <nav class="navbar navbar-inverse">
-    <div class="container">
-     <div class="navbar-header">
-      <a class="navbar-brand" href="/">PhoneBook</a>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-phone"></span> Organizer</a>
     </div>
-    <ul class="nav navbar-nav navbar-right">
-            @if (Route::has('login'))
-                    @auth
-                    <li>
-                       <a href="{{ url('/home') }}"><span class="glyphicon glyphicon-home"></span> Home</a>
-                    </li>
-                    @else
-                    <li >
-                        <a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-                    </li>
-                        @if (Route::has('register'))
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <!-- <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul> -->
+      <ul class="nav navbar-nav navbar-right">
+       @if (Route::has('login'))
+        @auth
+        <li>
+            <a href="{{ url('/home') }}"><span class="glyphicon glyphicon-home"></span> Home</a>
+        </li>
+            @else
+                <li >
+                    <a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                </li>
+                    @if (Route::has('register'))
                         <li>
-                            <a href="{{ route('register') }}">
-                            <span class="glyphicon glyphicon-user"></span> Register</a>
+                            <a href="{{ route('register') }}"><span class="glyphicon glyphicon-user"></span> Register</a>
                         </li>
-                        @endif
-                    @endauth
-                </ul>
-            @endif
-            </div>
-        </nav>
-<div id=but class="container">
-<button class="btn btn-lg">Add</button>
-<button class="btn btn-lg">Delete</button>
+                    @endif
+            @endauth
+        @endif
+      </ul>
+    </div>
+  </div>
+</nav>
 
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+    </div>
+    <div class="col-sm-8 text-left">
+    @if (Route::has('login'))
+        @auth
+             @yield('content')
+        @endauth
+    @else
+      <h1>Welcome</h1>
+      <p>To get started, you must log in</p>
+      <hr>
+      <h3>Test</h3>
+      <p>Lorem ipsum...</p>
+    @endif
+    </div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+  </div>
 </div>
-@yield('content')
 
-    </body>
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
+
+</body>
 </html>
