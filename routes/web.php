@@ -28,6 +28,6 @@ Route::prefix("/")->middleware(['auth'])->group( function () {
     Route::post('/add', 'MainController@add')->name('main-add');
     // Route::get('/edit/{id}', 'MainController@add')->name('news-edit');
     // Route::post('/edit/{id}', 'MainController@add')->name('news-update');
-    Route::get('/delete/{id}', 'MainController@delete')->name('main-delete');
+   // Route::get('/delete','{id}', 'MainController@delete')->name('main-delete');
 });
 

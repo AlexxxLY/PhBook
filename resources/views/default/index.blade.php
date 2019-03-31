@@ -10,7 +10,8 @@
         <td>+380684557899</td>
         <td>John</td>
         <td>best friend</td>
-        <td><button class="btn btn-xs btn-warning">Delete</button></td>
+        <td><a href="/" class="btn btn-xs btn-warning " onclick="return confirm('Are you sure?')">Delete</a> 
+        <!-- <button class="btn btn-xs btn-warning ">Delete</button></td> -->
       </tr>
      @endfor
     @endauth

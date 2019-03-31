@@ -22,9 +22,23 @@ class MainController extends Controller
     {
         if (view()->exists('default.forms.add')) {
             return view('default.forms.add');
+        } else {
+            abort(404);
         }
-        abort(404);
-
+        // $user_name = Auth::user()->name;
+        // Phone_contact::create([
+        //     'name' => $request->name,
+        //     'number' => $request->number,
+        //     'notes' => $request->notes,
+        //     // 'user_id' => $user_name,
+        // ]);
+        // return redirect(route(''));
     }
+
+    // public function delete($id)
+    // {
+    //     Phone_contact::find($id)->delete();
+    //     // return redirect(route(''));
+    // }
 
 }
