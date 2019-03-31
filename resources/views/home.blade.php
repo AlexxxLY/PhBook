@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in! to continue <a href="{{ url('/') }}">click me</a> 
                 </div>
             </div>
         </div>

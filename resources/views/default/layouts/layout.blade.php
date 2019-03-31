@@ -31,6 +31,13 @@
       padding: 15px;
     }
 
+    .text-center {
+      text-align: center;
+    }
+    th{
+      text-align: center;
+    }
+
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
       .sidenav {
@@ -103,19 +110,51 @@
      
     </div>
     <div class="col-sm-8 text-left">
-    @if (Route::has('login'))
-        @auth
-             @yield('content')
-        @endauth
-        @guest
-        <div class="text-center">
+
+
+@section('content')
+@guest
+    <div class="text-center">
            <br>
            <h1 >Welcome!!!</h1>
            <p>To get started, you must log in ...</p>
-           <hr>
         </div>
-        @endguest
-    @endif
+@endguest        
+<br>
+<div class="container">
+<a href="{{ route('main-add') }}"><button class="btn btn-lg btn-info">Add Contact</button></a>
+<br>
+<br>
+<input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
+  <table class="table table-bordered table-striped text-center">  
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Number</th>
+        <th>Name</th>
+        <th>Other</th>
+        <th>Operations</th>
+      </tr>
+    </thead>
+    @section('table-body')     
+     @yield('table-body')
+    @show
+  </table>
+</div>
+
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+@show
     </div>
     <!-- <div class="col-sm-2 sidenav"> -->
       <!-- <div class="well">

@@ -1,50 +1,40 @@
 @extends('default.layouts.layout')
-
-@section('content')
-<br>
-<div class="container">
-
-<button class="btn btn-lg btn-info">Add Contact</button>
-<button class="btn btn-lg btn-warning">Delete</button>
-<br>
-<!-- <div class = "text-center">
-  <h2>Phone Book</h2>
-  <p>demo version 1.0</p>
-</div>           -->
-<br>
-<input class="form-control" id="myInput" type="text" placeholder="Search..">
-  <br>
-
-  <table class="table table-bordered table-striped">  
-    <thead>
+ 
+@section('table-body')
+<tbody>
+@if (Route::has('login'))
+    @auth
+     @for($i = 0; $i < 10; $i++)
       <tr>
-        <th>Date</th>
-        <th>Number</th>
-        <th>Name</th>
-        <th>Other</th>
-        <th>Operations</th>
-      </tr>
-    </thead>
-    <tbody>
-    @for($i = 0; $i < 10; $i++)
-      <tr>
-      @if (Route::has('register'))
         <td>21.03.2019</td>
         <td>+380684557899</td>
         <td>John</td>
         <td>best friend</td>
-        <td>X</td>
-        @else
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      @endif
+        <td><button class="btn btn-xs btn-warning">Delete</button></td>
       </tr>
-    @endfor
+     @endfor
+    @endauth
+    @guest
+    <!-- <div class="text-center">
+           <br>
+           <h1 >Welcome!!!</h1>
+           <p>To get started, you must log in ...</p>
+           <hr>
+        </div> -->
+         @for($i = 0; $i < 10; $i++)
+           <tr>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+          </tr>
+         @endfor
+    @endguest
+@endif  
     </tbody>
   </table>
+  @auth
   <ul class="pagination">
   <li><a href="#">1</a></li>
   <li><a href="#">2</a></li>
@@ -52,18 +42,6 @@
   <li><a href="#">4</a></li>
   <li><a href="#">5</a></li>
 </ul>
+@endauth
 </div>
-
-<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
-
-
-@endsection
+@endsection('table')

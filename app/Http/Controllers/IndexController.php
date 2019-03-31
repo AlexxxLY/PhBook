@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-
 class IndexController extends Controller
 {
-  public function show(){
+    public function show()
+    {
 
-    if(view()->exists('default.index')){
-        return view('default.index');
+        // if (!isset(auth()->$user)) {
+
+            if (view()->exists('default.index')) {
+                return view('default.index');
+            }
+            abort(404);
+        // } else {
+
+        //     return view('default.main');
+        // }
     }
-    abort(404);
-  }  
-   
+
 }
