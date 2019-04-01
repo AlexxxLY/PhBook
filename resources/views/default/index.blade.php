@@ -1,7 +1,7 @@
 @extends('default.layouts.layout')
  
 @section('table-body')
-<tbody id="myTable">
+<tbody id ="myTable">
 @if (Route::has('login'))
     @auth
      @foreach($contacts as $contact)
@@ -15,7 +15,6 @@
            onclick="return confirm('Are you sure?')">Delete</a></td>
       </tr>
      @endforeach
-    
     @endauth
     @guest
     <!-- <div class="text-center">
@@ -38,13 +37,7 @@
     </tbody>
   </table>
   @auth
-  <ul class="pagination">
-  <li><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-</ul>
-@endauth
+  <div class = "text-center">{{ $contacts->links() }} </div>
+  @endauth
 </div>
 @endsection('table')

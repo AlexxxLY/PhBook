@@ -18,15 +18,31 @@ class MainController extends Controller
         // }
         //  $contacts  = Phone_contact::all();
         $contacts = Phone_contact::where('user_id', 1)
-            ->orderBy('name')
-        // ->limit($countNews)
-            ->get();
+            ->orderBy('name')->paginate(12);
+            
         if (view()->exists('default.index')) {
             return view('default.index', ['contacts' => $contacts]);
             // return view('default.index');
         } else {
             abort(404);
         }
+
+    }
+
+    public function search(Request $request)
+    {
+
+        $search = $request->get('search');
+        // $contacts = Phone_contact::where('name', 'like','%'.$search.'%' )
+        // ->orWhere('number', 'like','%'.$search.'%')
+        // ->orderBy('name')->paginate(10);
+        $contacts = Phone_contact::where('user_id', 1)
+            ->where(function ($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('number', 'like', '%' . $search . '%');
+            })
+            ->orderBy('name')->paginate(10);
+        return view('default.index', ['contacts' => $contacts]);
 
     }
 

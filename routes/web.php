@@ -23,6 +23,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix("/")->middleware(['auth'])->group( function () {
+    Route::get('/search', 'MainController@search')->name('search');
     Route::get('/list', 'MainController@list')->name('list');
     Route::get('/add', 'MainController@add');
     Route::post('/add', 'MainController@add')->name('main-add');
