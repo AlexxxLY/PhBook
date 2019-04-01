@@ -106,17 +106,9 @@
 <div class="container-fluid text-center">
   <div class="row content">
     <div class="col-sm-2 sidenav">
-    <!-- <h2>Order by</h2>
-    <form class="navbar-form navbar-center" action="/action_page.php">
-      <div class="form-group">
-      <select name="" id="">
-        <option selected value="name">name</option>
-        <option value="number">number</option>
-        <option value="date">date</option>
-      </select>
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form> -->
+    
+      <!-- <a href="{{ route('index') }}">Phone List</a>
+      <a href="{{ route('list') }}">Other</a> -->
       <p><a href="#">Link</a></p>
      
     </div>
@@ -133,9 +125,10 @@
 @endguest        
 <br>
 <div class="container">
+<div class="nav-bar">
 <a href="{{ route('list') }}"><button class="btn btn-lg btn-info">Add Contact</button></a>
 <a href="{{ route('index') }}"><button class="btn btn-lg btn-info">Show All List</button></a>
-<br>
+</div>
 <br>
 <!-- <input class="form-control" id="myInput" type="text" placeholder="Search.."> -->
 <form  method="get" class="form-horizontal" action="{{route('search')}}">
