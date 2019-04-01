@@ -2,34 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Phone_contact;
-use Illuminate\Http\File;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Storage;
+
 //use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
-    function index() {
+    public function index()
+    {
         // if (view()->exists('default.forms.add')) {
         //     return view('default.forms.add');
         // } else {
         //     abort(404);
         // }
-        // $contacts  = Phone_contact::all();
-
+        //  $contacts  = Phone_contact::all();
+        $contacts = Phone_contact::where('user_id', 1)
+            ->orderBy('name')
+        // ->limit($countNews)
+            ->get();
         if (view()->exists('default.index')) {
-            // return view('default.index',['contacts' => $contacts]);
-            return view('default.index');
+            return view('default.index', ['contacts' => $contacts]);
+            // return view('default.index');
+        } else {
+            abort(404);
         }
-        else{
-            abort(404);              
-        }
-        
+
     }
-    
+
     function list() {
         if (view()->exists('default.forms.add')) {
             return view('default.forms.add');
@@ -38,14 +38,14 @@ class MainController extends Controller
         }
         // $contacts  = Phone_contact::all();
 
-        if (view()->exists('default.index')) {
-            // return view('default.index',['contacts' => $contacts]);
-            return view('default.index');
-        }
-        else{
-            abort(404);              
-        }
-        
+        // if (view()->exists('default.index')) {
+        //     // return view('default.index',['contacts' => $contacts]);
+        //     return view('default.index');
+        // }
+        // else{
+        //     abort(404);
+        // }
+
     }
 
     public function add(Request $request)
@@ -57,7 +57,7 @@ class MainController extends Controller
         // }
         // $user_id = Auth::user()->id;
         //$user_id = "1";
-       //$user_id = Auth::user()->id;
+        //$user_id = Auth::user()->id;
         Phone_contact::create([
             'name' => $request->name,
             'number' => $request->number,
@@ -67,10 +67,10 @@ class MainController extends Controller
         return redirect(url('/'));
     }
 
-    // public function delete($id)
-    // {
-    //     Phone_contact::find($id)->delete();
-    //     // return redirect(route(''));
-    // }
+    public function delete($id)
+    {
+        Phone_contact::find($id)->delete();
+        return redirect(route('index'));
+    }
 
 }

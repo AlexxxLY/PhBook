@@ -1,19 +1,21 @@
 @extends('default.layouts.layout')
  
 @section('table-body')
-<tbody>
+<tbody id="myTable">
 @if (Route::has('login'))
     @auth
-     @for($i = 0; $i < 10; $i++)
+     @foreach($contacts as $contact)
       <tr>
-        <td>21.03.2019</td>
-        <td>+380684557899</td>
-        <td>John</td>
-        <td>best friend</td>
-        <td><a href="/" class="btn btn-xs btn-warning " onclick="return confirm('Are you sure?')">Delete</a> 
-        <!-- <button class="btn btn-xs btn-warning ">Delete</button></td> -->
+        <td>{{$contact->created_at}}</td>
+        <td>{{$contact->number}}</td>
+        <td>{{$contact->name}}</td>
+        <td>{{$contact->notes}}</td>
+        <td>
+        <a href="{{route('main-delete',[$contact->id])}}" class="btn btn-xs btn-warning " 
+           onclick="return confirm('Are you sure?')">Delete</a></td>
       </tr>
-     @endfor
+     @endforeach
+    
     @endauth
     @guest
     <!-- <div class="text-center">

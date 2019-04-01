@@ -143,7 +143,6 @@
   </table>
 </div>
 
-
 <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -154,6 +153,7 @@ $(document).ready(function(){
   });
 });
 </script>
+
 @show
     </div>
     <!-- <div class="col-sm-2 sidenav"> -->
