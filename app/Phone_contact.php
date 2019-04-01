@@ -8,6 +8,6 @@ class Phone_contact extends Model
 {
     //
     protected $fillable = [
-        'name', 'number', 'notes',
+        'name', 'number', 'notes','user_id',
     ];
 }

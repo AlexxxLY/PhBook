@@ -11,11 +11,10 @@
 |
 */
 
-Route::get('/','IndexController@show'); 
-// {
-//     // //return view('welcome');
-//     // return view('default.index');
-// });
+// Route::get('/','IndexController@show')->name('main'); 
+
+Route::get('/', 'MainController@index')->name('index');
+Route::get('/list', 'MainController@list')->name('list');
 
 Auth::routes();
 
@@ -23,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix("/")->middleware(['auth'])->group( function () {
 
-    //Route::get('/', 'MainController@list')->name('main');
+    // Route::get('/', 'MainController@list')->name('list');
     Route::get('/add', 'MainController@add');
     Route::post('/add', 'MainController@add')->name('main-add');
     // Route::get('/edit/{id}', 'MainController@add')->name('news-edit');

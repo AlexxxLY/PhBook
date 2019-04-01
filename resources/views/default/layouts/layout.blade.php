@@ -122,7 +122,7 @@
 @endguest        
 <br>
 <div class="container">
-<a href="{{ route('main-add') }}"><button class="btn btn-lg btn-info">Add Contact</button></a>
+<a href="{{ route('list') }}"><button class="btn btn-lg btn-info">Add Contact</button></a>
 <br>
 <br>
 <input class="form-control" id="myInput" type="text" placeholder="Search..">
