@@ -15,7 +15,8 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="text">Number:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="number" placeholder="Enter phone number" name="number">
+                <input type="tel" class="form-control" id="number" pattern="(\+|[0-9])+[0-9]+$"
+                    placeholder="Enter phone number" name="number">
             </div>
         </div>
         <div class="form-group">

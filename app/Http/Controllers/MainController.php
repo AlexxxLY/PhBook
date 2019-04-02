@@ -43,7 +43,8 @@ class MainController extends Controller
 
     }
 
-    function add() {
+    public function add()
+    {
 
         if (view()->exists('default.forms.add')) {
             return view('default.forms.add');
@@ -55,16 +56,23 @@ class MainController extends Controller
     public function create(Request $request)
     {
         $id = $this->get_id();
+
+        if (empty($request->notes)) {
+            $notes = "-";
+        } else {
+            $notes = $request->notes;
+        }
+
         $this->validate($request, [
-            'name' => "bail|required|unique:phone_contacts,name,NULL,id,user_id, $id",
-            'number' => "bail|required|unique:phone_contacts,number,NULL,id,user_id, $id",
-            'notes' => 'required',
+            'name' => "bail|required|max:25|unique:phone_contacts,name,NULL,id,user_id, $id",
+            'number' => "bail|required|max:13|unique:phone_contacts,number,NULL,id,user_id, $id",
+            'notes' => 'max:35',
         ]);
 
         Phone_contact::create([
             'name' => $request->name,
             'number' => $request->number,
-            'notes' => $request->notes,
+            'notes' => $notes,
             'user_id' => $request->user_id,
         ]);
         return redirect(route('index'));
@@ -86,5 +94,5 @@ class MainController extends Controller
             return 0;
         }
     }
-    
+
 }
